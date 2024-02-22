@@ -1,0 +1,23 @@
+run-name: Deploy ${{ inputs.serviceName }} to ${{ inputs.environmentName }}
+on:
+  workflow_dispatch:
+    inputs:
+      serviceName:
+        description: "Service Name"
+        required: true
+        type: string
+      environmentName:
+         description: "Environment to be deployed"
+         required: true
+         type: choice
+         options:
+            - STG
+            - PROD        
+jobs:
+  dynamicJob:
+    runs-on:
+      ubuntu-latest
+    steps:
+      - name: Set service name and working dir variables
+        run: |
+          echo "Tesing Dynamic API name for deployment"
